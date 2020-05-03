@@ -1,0 +1,138 @@
+options:
+	noperm: "&7[&9SuperTools&7]&f Uh oh! You do not have permission to do this!"
+	banhammer: diamond axe named "&4&lBan Hammer"
+	kickstick: blaze rod named "&4&lKick Stick"
+	mutestick: stick named "&4&lMute Stick"
+
+command /supertools [<text>]:
+  permission: supertools.admin
+  permission message: {@noperm}
+  trigger:
+    if arg-1 is "help":
+      send "&b----------&cSuperTools&b----------" and " /supertools smitestick " and " /supertools remove" and " /supertools reload" and " /supertools kickstick" and " /supertools mutestick" and  " /supertools banhammer" and " /supertools credit" and " /supertools gui" and  "&b-----------------------------"
+    else if arg-1 is not set:
+      execute player command "/supertools help "
+    else if arg-1 is "smitestick":
+      set player's tool to stick named "&4&lSmite stick"
+      execute player command "/pt smite"
+      send "&7[&9SuperTools&7]&f Ok! i gave you a Smite Stick!"
+    else if arg-1 is "remove":
+      execute player command "/pttoggle"
+      remove stick named "&4&lSmite stick" from player's inventory
+      remove {@banhammer} from player's inventory
+      remove {@mutestick} from player's inventory
+      remove {@kickstick} from player's inventory
+      send "&7[&9SuperTools&7]&f Ok! I removed your supertools!"
+    else if arg-1 is "reload":
+      send "&7[&9SuperTools&7]&f Reloading..."
+      execute console command "/sk reload supertools"
+      send "&7[&9SuperTools&7]&f Successfully Reloaded!"
+    else if arg-1 is "banhammer":
+      set player's tool to {@banhammer}
+      send "&7[&9SuperTools&7]&f Ok! i gave you a Ban Hammer!"
+    else if arg-1 is "kickstick":
+      set player's tool to {@kickstick}
+      send "&7[&9SuperTools&7]&f Ok! i gave you a Kick Stick!"
+    else if arg-1 is "mutestick":
+      set player's tool to {@mutestick}
+      send "&7[&9SuperTools&7]&f Ok! i gave you a Mute Stick!"
+    else if arg-1 is "credit":
+      send "&7[&9SuperTools&7]&f Supertools is a plugin made by SkygamezMC in 5/3/2020. its a skript with a smitestick, ban hammer, mute stick, and a kick stick! SuperTools is a great way to moderate fast and efficiently without all the confusing commands! just one click and the person is punished! Supertools version 1.0 ©SkygamezMC 2020"
+    else if arg-1 is "gui":
+      execute player command "/sktyl"
+    else if arg-1 is not "reload" or "smitestick" or "help" or "remove" or "banhammer" or "kick stick" or "gui":
+      execute player command "/supertools help "
+
+command /st [<text>]:
+  permission: supertools.admin
+  permission message: {@noperm}
+  trigger:
+    if arg-1 is "help":
+      send "&b----------&cSuperTools&b----------" and " /supertools smitestick " and " /supertools remove" and " /supertools reload" and " /supertools kickstick" and " /supertools mutestick" and  " /supertools banhammer" and " /supertools credit" and " /supertools gui" and  "&b-----------------------------"
+    else if arg-1 is not set:
+      execute player command "/supertools help "
+    else if arg-1 is "smitestick":
+      set player's tool to stick named "&4&lSmite stick"
+      execute player command "/pt smite"
+      send "&7[&9SuperTools&7]&f Ok! i gave you a Smite Stick!"
+    else if arg-1 is "remove":
+      execute player command "/pttoggle"
+      remove stick named "&4&lSmite stick" from player's inventory
+      remove {@banhammer} from player's inventory
+      remove {@mutestick} from player's inventory
+      remove {@kickstick} from player's inventory
+      send "&7[&9SuperTools&7]&f Ok! I removed your supertools!"
+    else if arg-1 is "reload":
+      send "&7[&9SuperTools&7]&f Reloading..."
+      execute console command "/sk reload supertools"
+      send "&7[&9SuperTools&7]&f Successfully Reloaded!"
+    else if arg-1 is "banhammer":
+      set player's tool to {@banhammer}
+      send "&7[&9SuperTools&7]&f Ok! i gave you a Ban Hammer!"
+    else if arg-1 is "kickstick":
+      set player's tool to {@kickstick}
+      send "&7[&9SuperTools&7]&f Ok! i gave you a Kick Stick!"
+    else if arg-1 is "mutestick":
+      set player's tool to {@mutestick}
+      send "&7[&9SuperTools&7]&f Ok! i gave you a Mute Stick!"
+    else if arg-1 is "credit":
+      send "&7[&9SuperTools&7]&f Supertools is a plugin made by SkygamezMC in 5/3/2020. its a skript with a smitestick, ban hammer, mute stick, and a kick stick! SuperTools is a great way to moderate fast and efficiently without all the confusing commands! just one click and the person is punished! Supertools version 1.0 ©SkygamezMC 2020"
+    else if arg-1 is "gui":
+      execute player command "/sktyl"
+    else if arg-1 is not "reload" or "smitestick" or "help" or "remove" or "banhammer" or "kick stick" or "gui":
+      execute player command "/supertools help "
+
+on rightclick:
+      if name of player's held item is "&4&lBan Hammer":
+            if player has permission "supertools.admin.tools":
+                  execute console command "/ban %clicked player%"
+
+on rightclick:
+      if name of player's held item is "&4&lKick Stick":
+            if player has permission "supertools.admin.tools":
+                  execute console command "/kick %clicked player%"
+
+on rightclick:
+      if name of player's held item is "&4&lMute Stick":
+            if player has permission "supertools.admin.tools":
+                  execute console command "/mute %clicked player%"
+
+command /sktyl:
+  permission: supertools.admin
+  trigger:
+    open virtual chest inventory with size 3 named "test" to player
+    format gui slot 0 of player with blue stained glass pane named "&4"
+    format gui slot 1 of player with blue stained glass pane named "&4"
+    format gui slot 2 of player with blue stained glass pane named "&4"
+    format gui slot 3 of player with blue stained glass pane named "&4"
+    format gui slot 4 of player with blue stained glass pane named "&4"
+    format gui slot 5 of player with blue stained glass pane named "&4"
+    format gui slot 6 of player with blue stained glass pane named "&4"
+    format gui slot 7 of player with blue stained glass pane named "&4"
+    format gui slot 8 of player with blue stained glass pane named "&4"
+    format gui slot 9 of player with blue stained glass pane named "&4"
+      execute player command "/supertools smitestick"
+    format gui slot 10 of player with stick named "&4Smite Stick" to run:
+      execute player command "/supertools smitestick"
+    format gui slot 11 of player with blaze rod named "&4Kick Stick" to run:
+      execute player command "/supertools kickstick"
+    format gui slot 12 of player with stick named "&4mute Stick" to run:
+      execute player command "/supertools mutestick"
+    format gui slot 13 of player with diamond axe named "&4Ban Hammer" to run:
+      execute player command "/supertools Banhammer"
+    format gui slot 14 of player with paper named "&4Credits" to run:
+      execute player command "/supertools credit"
+    format gui slot 15 of player with book named "&4Commands" to run:
+      execute player command "/supertools"
+    format gui slot 16 of player with barrier named "&4Reload" to run:
+      execute player command "/supertools reload"
+    format gui slot 17 of player with blue stained glass pane named "&4"
+    format gui slot 18 of player with blue stained glass pane named "&4"
+    format gui slot 19 of player with blue stained glass pane named "&4"
+    format gui slot 20 of player with blue stained glass pane named "&4"
+    format gui slot 21 of player with blue stained glass pane named "&4"
+    format gui slot 22 of player with blue stained glass pane named "&4"
+    format gui slot 23 of player with blue stained glass pane named "&4"
+    format gui slot 24 of player with blue stained glass pane named "&4"
+    format gui slot 25 of player with blue stained glass pane named "&4"
+    format gui slot 26 of player with blue stained glass pane named "&4"
